@@ -68,10 +68,10 @@ def zoom(event):
     updatelmao()
 filenumber = 1 # which file to load first 1-78
 couny,caunt,number,lisy = False,0,0,[]
-cvspath,oldsec,number,root,slep,caunt = f"D:/Sorted files/{filenumber}.zip",0,0,[],0,0
+cvspath,oldsec,number,root,slep,caunt = f"{filenumber}.zip",0,0,[],0,0
 while True:
     if couny == False:
-        root = getcsvindex.getcsvindex(cvspath, "history.txt")
+        root = getcsvindex.getcsvindex("D:/Sorted files.zip","history.txt", cvspath)
         number = len(root) - 6
         print(f"{number}")
         couny = True
@@ -81,8 +81,8 @@ while True:
         caunt, couny = 0, False
         filenumber += 1
         print(f"new file loaded")
+        cvspath = f"{filenumber}.zip"
         continue
-    cvspath = f"D:/Sorted files/{filenumber}.zip"
     timestamp, user_id, colord, cords = root["timestamp"][caunt], root["user_id"][caunt], root["colord"][caunt], root["cords"][caunt]
     timestamp2, user_id2, colord2, cords2, = root["timestamp"][caunt + 1], root["user_id"][caunt + 1], root["colord"][caunt + 1], root["cords"][caunt + 1]
     tim1,tim2 = float(timestamp.replace(" UTC","").replace(" ","").replace(":","").replace("-","")),float(timestamp2.replace(" UTC","").replace(" ","").replace(":","").replace("-",""))
